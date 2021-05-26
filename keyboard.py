@@ -4,9 +4,12 @@ C struct definitions credit
 Author: LucasG (https://github.com/lucasg)
 Source: http://stackoverflow.com/questions/13564851/generate-keyboard-events
 """
-
+# imports time varibles 
 import time
+# imports key type varibles 
 import ctypes
+
+
 
 # Import the SendInput object
 SendInput = ctypes.windll.user32.SendInput
@@ -14,7 +17,7 @@ SendInput = ctypes.windll.user32.SendInput
 # C struct redefinitions
 PUL = ctypes.POINTER(ctypes.c_ulong)
 
-class KeyBdInput(ctypes.Structure):
+class KeyBdInput(ctypes.Structure):#sets up the ablity to input @@@@@@@@@@@
     _fields_ = [
         ("wVk", ctypes.c_ushort),
         ("wScan", ctypes.c_ushort),
@@ -23,14 +26,14 @@ class KeyBdInput(ctypes.Structure):
         ("dwExtraInfo", PUL)
     ]
 
-class HardwareInput(ctypes.Structure):
+class HardwareInput(ctypes.Structure):#sets up the ablity to input @@@@@@@@@@@
     _fields_ = [
         ("uMsg", ctypes.c_ulong),
         ("wParamL", ctypes.c_short),
         ("wParamH", ctypes.c_ushort)
     ]
 
-class MouseInput(ctypes.Structure):
+class MouseInput(ctypes.Structure):# helps user use tehr mouse 
     _fields_ = [
         ("dx", ctypes.c_long),
         ("dy", ctypes.c_long),
@@ -40,14 +43,14 @@ class MouseInput(ctypes.Structure):
         ("dwExtraInfo", PUL)
     ]
 
-class Input_I(ctypes.Union):
+class Input_I(ctypes.Union):# helps alow the user to use ther mosue 
     _fields_ = [
         ("ki", KeyBdInput),
         ("mi", MouseInput),
         ("hi", HardwareInput)
     ]
 
-class Input(ctypes.Structure):
+class Input(ctypes.Structure):#sets up the ablity to input @@@@@@@@@@@
     _fields_ = [
         ("type", ctypes.c_ulong),
         ("ii", Input_I)
@@ -60,60 +63,61 @@ class Keyboard:
     :description:
 
     Keyboard methods to trigger fake key events
+    
     """
 
     # Keyboard key constants
     # More information: https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
-    VK_BACKSPACE = 0x08
-    VK_ENTER = 0x0D
-    VK_CTRL = 0x11
-    VK_ALT = 0x12
-    VK_0 = 0x30
-    VK_1 = 0x31
-    VK_2 = 0x32
-    VK_3 = 0x33
-    VK_4 = 0x34
-    VK_5 = 0x35
-    VK_6 = 0x36
-    VK_7 = 0x37
-    VK_8 = 0x38
-    VK_9 = 0x39
-    VK_A = 0x41
-    VK_B = 0x42
-    VK_C = 0x43
-    VK_D = 0x44
-    VK_E = 0x45
-    VK_F = 0x46
-    VK_G = 0x47
-    VK_H = 0x48
-    VK_I = 0x49
-    VK_J = 0x4A
-    VK_K = 0x4B
-    VK_L = 0x4C
-    VK_M = 0x4D
-    VK_N = 0x4E
-    VK_O = 0x4F
-    VK_P = 0x50
-    VK_Q = 0x51
-    VK_R = 0x52
-    VK_S = 0x53
-    VK_T = 0x54
-    VK_U = 0x55
-    VK_V = 0x56
-    VK_W = 0x57
-    VK_X = 0x58
-    VK_Y = 0x59
-    VK_Z = 0x5A
-    VK_VOLUME_MUTE = 0xAD
-    VK_VOLUME_DOWN = 0xAE
-    VK_VOLUME_UP = 0xAF
-    VK_MEDIA_NEXT_TRACK = 0xB0
-    VK_MEDIA_PREV_TRACK = 0xB1
-    VK_MEDIA_PLAY_PAUSE = 0xB3
-    VK_MEDIA_STOP = 0xB2
-    VK_LBUTTON = 0x01
-    VK_RBUTTON = 0x02
-    VK_CANCEL = 0x03
+    VK_BACKSPACE = 0x08 #Assines the backspace  key
+    VK_ENTER = 0x0D #Assines the enter key
+    VK_CTRL = 0x11#Assines the control key
+    VK_ALT = 0x12#Assines the alt  key
+    VK_0 = 0x30#Assines the key
+    VK_1 = 0x31#Assines the  1  key
+    VK_2 = 0x32#Assines the  2 key
+    VK_3 = 0x33#Assines the 3 key
+    VK_4 = 0x34#Assines the 4 key
+    VK_5 = 0x35#Assines the 5 key
+    VK_6 = 0x36#Assines the 6 key
+    VK_7 = 0x37#Assines the 7 key
+    VK_8 = 0x38#Assines the 8 key
+    VK_9 = 0x39#Assines the 9 key
+    VK_A = 0x41#Assines the Akey
+    VK_B = 0x42#Assines the b key
+    VK_C = 0x43#Assines the ckey
+    VK_D = 0x44#Assines the d key
+    VK_E = 0x45#Assines the f key
+    VK_F = 0x46#Assines the g key
+    VK_G = 0x47#Assines the g key
+    VK_H = 0x48#Assines the h key
+    VK_I = 0x49#Assines the i key
+    VK_J = 0x4A#Assines the j key
+    VK_K = 0x4B#Assines the k key
+    VK_L = 0x4C#Assines the  l key
+    VK_M = 0x4D#Assines the m key
+    VK_N = 0x4E#Assines the n key
+    VK_O = 0x4F#Assines the o key
+    VK_P = 0x50#Assines the p key
+    VK_Q = 0x51#Assines the q key
+    VK_R = 0x52#Assines the  r key
+    VK_S = 0x53#Assines the s key
+    VK_T = 0x54#Assines the t key
+    VK_U = 0x55#Assines the u key
+    VK_V = 0x56#Assines the v key
+    VK_W = 0x57#Assines the w key
+    VK_X = 0x58#Assines the x key
+    VK_Y = 0x59#Assines the y key
+    VK_Z = 0x5A#Assines the z key
+    VK_VOLUME_MUTE = 0xAD #this contols muting the volume
+    VK_VOLUME_DOWN = 0xAE# this control teh volume down button
+    VK_VOLUME_UP = 0xAF# this assines the volume up button
+    VK_MEDIA_NEXT_TRACK = 0xB0 #not used
+    VK_MEDIA_PREV_TRACK = 0xB1#not used
+    VK_MEDIA_PLAY_PAUSE = 0xB3#not used 
+    VK_MEDIA_STOP = 0xB2#not used 
+    VK_LBUTTON = 0x01#this assines the left click
+    VK_RBUTTON = 0x02#this assines the right click
+    VK_CANCEL = 0x03#you get the piont it establishes the whole keyboard
     VK_MBUTTON = 0x04
     VK_XBUTTON1 = 0x05
     VK_XBUTTON2 = 0x06
@@ -242,7 +246,7 @@ class Keyboard:
     VK_PA1 = 0xFD
     VK_OEM_CLEAR = 0xFE
 
-    def keyDown(keyCode):
+    def keyDown(keyCode):# this sets up the down key 
         """
         Key down wrapper
         :param keyCode: int
@@ -254,7 +258,7 @@ class Keyboard:
         x = Input( ctypes.c_ulong(1), ii_ )
         SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
 
-    def keyUp( keyCode):
+    def keyUp( keyCode):#writes teh code to make the volume up key work as untended 
         """
         Key up wrapper
         :param keyCode: int
@@ -266,7 +270,7 @@ class Keyboard:
         x = Input( ctypes.c_ulong(1), ii_ )
         SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
 
-    def key( keyCode, length = 0):
+    def key( keyCode, length = 0):# this is the template that we used to make the keys pior
         """
         Type a key
         :param keyCode: int
